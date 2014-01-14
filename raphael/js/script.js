@@ -75,4 +75,6 @@ $(document).ready(function(){
 	
 	var barchart = x.barchart(10, 50, 500, 220, [data]).hover(fin, fout);
 	
+	// Axis: r.g.axis(x_start, y_start, x_width, from, to, steps, orientation, labels, type, dashsize)
+	// SO: http://stackoverflow.com/questions/4679785/graphael-bar-chart-with-text-x-axis
 });
