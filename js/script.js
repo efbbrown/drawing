@@ -1,3 +1,5 @@
+// 2009 nettuts: http://net.tutsplus.com/tutorials/javascript-ajax/an-introduction-to-the-raphael-js-library/
+
 $(document).ready(function(){
 	var location = $('#canvas').get(0);
 	
@@ -50,26 +52,27 @@ $(document).ready(function(){
 	});	
 	
 	// ==============================================
-	// MOOD METER
-	var moods = ['shitty', 'surviving', 'good', 'awesome', 'great'];
-	var colors = ['#cc0000', '#a97e22', '#9f9136', '#7c9a2d', '#3a9a2d'];
-	var user_mood = 5;
+	// BARCHART
+	// ============================================= 
+	var x = new Raphael('gRaph');	// creates paper
 	
-	var target = $('#mood').get(0);
-	var paper = new Raphael(target, 500, 500);
+	// Raphael.g.barchart(x, y, width, height, values, options)
+		// options are: type (round, square, soft, sharp), stacked (true, false), gutter etc.
+	var data = [1,5,23,4,5,8,9,14,24,36,31,2,22,24,24,15,4,4,8,12];
 	
-	var circle = paper.circle(250, 250, 200).attr({ 
-		fill: '#000' 
-	});
+	// add hover and label functionality
+	var fin = function(){
+		this.flag = x.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+	};
+	 var fout = function(){
+		 this.flag.animate({ opacity: 0 }, 300, function(){
+			 this.remove();
+		 });
+	};
 	
-	var mood_text = paper.text(250, 250, 'Mood \nscore').attr({
-		fill: '#fff'
-	});
+	var txtattr = { font: '24px sans-serif' };
+	x.text(160, 10, 'My chart').attr(txtattr); // create heading
+	
+	var barchart = x.barchart(10, 50, 500, 220, [data]).hover(fin, fout);
 	
 });
-
-
-function showMood(){
-	//...
-	// javascript: http://net.tutsplus.com/tutorials/javascript-ajax/an-introduction-to-the-raphael-js-library/
-}
