@@ -39,6 +39,7 @@ circle.exit()
     .remove();  // remove the data
 
 // ====================================================
+// shapeshifting..
 
 var draw_data = function(data){
     var svg = d3.select("svg");
