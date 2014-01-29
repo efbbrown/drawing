@@ -1,6 +1,6 @@
 var leafletMap = L.map('leafletMap').setView([51.505, -0.09], 13);
 
-L.tileLayer('http://{s}.title.cloudmade.com/' + API_KEY + '/997/256/{z}/{x}/{y}.png', {
+L.tileLayer('http://{s}.tile.cloudmade.com/' + API_KEY + '/997/256/{z}/{x}/{y}.png', {
 	attribution: 'Map data &copy; [...]',
 	maxZoom: 18
 }).addTo(leafletMap);
