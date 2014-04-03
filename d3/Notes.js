@@ -1,6 +1,12 @@
 // for every time that we see data but do not see an element
 .enter()
 
+/*
+DOM elements < data elements (enter)
+DOM elements > data elements (exit)
+DOM elements === data elements (update)
+*/
+
 // closure
 function functor(x){
 	return function(){

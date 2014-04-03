@@ -28,13 +28,13 @@ var circle = d3.select("#example").selectAll("circle")
 // change attribution based on data
 circle
     .transition()
-    .duration(3000)
+    .duration(900)
     .attr("r",function(d){return d;});
 
 // select the rest circle which are not binded to data yet.
 circle.exit()
     .transition()
-    .duration(3000)
+    .duration(900)
     .attr("r",0)
     .remove();  // remove the data
 
@@ -63,7 +63,7 @@ var draw_data = function(data){
         .remove();
 };
 
- setTimeout(function(){draw_data([1000,2000,3000]);},2000) ;
- setTimeout(function(){draw_data([100,200,300,400]);},4000); 
- setTimeout(function(){draw_data([500,700,600]);},6000) ;
- setTimeout(function(){draw_data([1200,1000]);},8000) ;
+ setTimeout(function(){draw_data([1000,2000,3000]);},200) ;
+ setTimeout(function(){draw_data([100,200,300,400]);},500); 
+ setTimeout(function(){draw_data([500,700,600]);},1000) ;
+ setTimeout(function(){draw_data([1200,1000]);},1400) ;

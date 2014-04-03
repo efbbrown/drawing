@@ -33,6 +33,11 @@ var canvas = d3.select('#target')
 			.append('g')	// create a group
 			.attr('transform', 'translate(20, 0)')	// move everything
 
+// add axis
+canvas.append('g')
+		.attr('transform', 'translate(0, 450)')
+		.call(axis);
+
 // draw bars
 var bars = canvas.selectAll('rect')		// empty selection
 			.data(dataArray)			// bind data to empty selection
@@ -60,8 +65,3 @@ var bars = canvas.selectAll('rect')		// empty selection
 				.attr('fill', function(d){
 					return colorScale(d);
 				});
-
-// add axis
-canvas.append('g')
-		.attr('transform', 'translate(0, 450)')
-		.call(axis);
