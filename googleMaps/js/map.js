@@ -19,3 +19,6 @@ function loadScript(){
 }
 
 window.onload = loadScript;
+
+// Google Maps JavaScript API provides a set of events that you can handle to determine state changes. For more information, see Map Events
+// https://developers.google.com/maps/documentation/javascript/events
