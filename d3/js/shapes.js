@@ -1,17 +1,16 @@
 // create divs
-// **add class to element using d3?
-d3.select('body').append('div').text('this is a div')
-d3.select('body').append('div').text('this is a div')
-d3.select('body').append('div').text('this is a div')
-d3.select('body').append('div').text('this is a div')
-d3.select('body').append('div').text('this is a div')
-    
-d3.selectAll('div')
+for (var i = 0; i < 5; i++){
+	d3.select('#right-contain')
+		.append('div')
+		.attr('class', 'bars')
+}
+
+d3.selectAll('.bars')
 	.data([125, 230, 435, 140, 335])
 	.transition()
 	.duration(1000)	// animation
 	.style('width', function(d) { return d + 'px'; })	// set width based on data
-	.style('background-color', 'steelblue')
+	.style('background-color', 'steelblue');
 
 // draw basic shapes
 // =========================

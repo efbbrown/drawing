@@ -39,19 +39,29 @@ var bars = canvas.selectAll('rect')		// empty selection
 			.enter()					// placeholders for each point that has no corresponding rectangle
 				// for each data selection
 				.append('rect')
+				// initial settings
+				.attr('width', 0)
+				.attr('fill', 'blue')
+				.attr('height', 50)
+				.attr('y', function(d, index){
+					// 25px gap between each rectangle
+					return index * 75;
+				})
+
+				// animation
+				.transition()
+				.duration(900)
+
+				// final settings
 				.attr('width', function(d){
 					// width corresponds to data
 					return widthScale(d);
 				})
-				.attr('height', 50)
 				.attr('fill', function(d){
 					return colorScale(d);
-				})
-				.attr('y', function(d, index){
-					// 25px gap between each rectangle
-					return index * 75;
 				});
 
+// add axis
 canvas.append('g')
 		.attr('transform', 'translate(0, 450)')
 		.call(axis);
