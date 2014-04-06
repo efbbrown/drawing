@@ -67,3 +67,17 @@ var draw_data = function(data){
  setTimeout(function(){draw_data([100,200,300,400]);},500); 
  setTimeout(function(){draw_data([500,700,600]);},1000) ;
  setTimeout(function(){draw_data([1200,1000]);},1400) ;
+
+/*
+Three little circles: http://mbostock.github.io/d3/tutorial/circle.html
+
+var circle = svg.selectAll("circle")
+    .data([32, 57, 293], String);
+
+circle.enter().append("circle")
+    .attr("cy", 90)
+    .attr("cx", String)   // compute the attribute value from the associated data (https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String)
+    .attr("r", Math.sqrt);
+
+circle.exit().remove();
+*/

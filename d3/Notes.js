@@ -17,7 +17,6 @@ function functor(x){
 var val = functor(10);
 assert.equal(val(), 10);	// val is a function that always returns 10
 
-
 // empty selection
 var selection = d3.selectAll('circle')
 					.data([1,2,3]);
@@ -37,6 +36,31 @@ selection.text(function(d){
 	return d.fooBar;
 })
 
+// Handles all three states: enter, exit and update
+// The enter, update and exit selections are computed by the data operator
+// can recompute when given various sized datasets
+var circle = svg.selectAll("circle")
+    .data(data);
+
+circle.exit()
+	.transition()
+	.attr('r', 0)	// shrink out
+	.remove();
+
+circle.enter().append("circle")
+	.attr('r', 0)	
+	.transition()
+    .attr("r", 2.5);	// expand in
+
+circle
+    .attr("cx", function(d) { return d.x; })
+    .attr("cy", function(d) { return d.y; });
+
+// The update selection is returned by selection.data, 
+// while the enter and exit selections hang off the update 
+// selection
+// http://bost.ocks.org/mike/join/
+
 // SCALE
 d3.scale.linear()
 	// data comes in
@@ -48,3 +72,11 @@ d3.scale.linear()
 var projection = d3.geo.mercator();
 // data goes in representation comes out
 var px projection([lon, lat]);
+
+//	Array methods
+=====================
+d3.extend(dataArray)		// gives the [max, min] values in array
+d3.shuffle(dataArray)		// randomize array
+d3.sum(dataArray)
+d3.mean(dataArray)
+d3.median(dataArray)

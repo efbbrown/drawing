@@ -19,7 +19,7 @@ d3.selectAll('.bars')
 var canvas = d3.select('#target')
 			.append('svg')
 			.attr('width', 500)
-			.attr('height', 500);
+			.attr('height', 350);
 
 var rectangle = canvas.append('rect')	// top left corner
 					.attr('width', 100)
@@ -28,14 +28,14 @@ var rectangle = canvas.append('rect')	// top left corner
 var line = canvas.append('line')
 				.attr('x1', 500)
 				.attr('y1', 100)			// first point
-				.attr('x2', 400)
-				.attr('y2', 400)			// second point
+				.attr('x2', 300)
+				.attr('y2', 300)			// second point
 				.attr('stroke', 'green')	// color
 				.attr('stroke-width', 8);	// width
 
 var circle = canvas.append('circle')
-				.attr('cx', 250)		// x position
-				.attr('cy', 300)		// y position
+				.attr('cx', 150)		// x position
+				.attr('cy', 200)		// y position
 				.attr('r', 40)			// radius
 
 // Transitions

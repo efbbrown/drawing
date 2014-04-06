@@ -4,19 +4,15 @@
 var width = 500;
 var height = 500;
 var dataArray = [120, 50, 30, 70, 90, 10];
-// ascending array
-dataArray.sort(function(a,b){
-	return a-b;
-});
 
-// get maximum value of an array
-// Math.max.apply(Math, array);
+// ascending array
+dataArray.sort(d3.ascending)
 
 // define scales
 var widthScale = d3.scale.linear()
-					.domain([0, Math.max.apply(Math, dataArray)])	
+					.domain([0, d3.max(dataArray)])	// maximum value in array
 					.range([0, width]);
-
+					
 var colorScale = d3.scale.linear()
 					.domain([0, Math.max.apply(Math, dataArray)])
 					.range(['blue', 'green']);
