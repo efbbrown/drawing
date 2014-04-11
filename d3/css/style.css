@@ -8,6 +8,6 @@ div.bars {
 }
 
 /* shapes svg */
-#target:first-child {
+.bgcolor {
 	background-color: #FFD39B;
 }

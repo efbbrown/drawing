@@ -1,4 +1,4 @@
-// Simple bar chart
+// Basic bar chart
 // =========================
 for (var i = 0; i < 5; i++){
 	// create divs
