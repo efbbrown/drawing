@@ -1,9 +1,11 @@
 var width = 500;
 var height = 500;
 
+// creates bar chart from json data
+// ===============================
 d3.json('../people_data.json', function(data){
 
-	var canvas = d3.select('#routes').append('svg')
+	var canvas = d3.select('#people').append('svg')
 					.attr('width', width)
 					.attr('height', height);
 
