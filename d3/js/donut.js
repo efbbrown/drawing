@@ -1,22 +1,52 @@
-var data = [10, 20, 80, 30];
+// d3 video lesson 13
+// ==================
+var data = [10, 27, 40, 23];
+var radius = 300;
 
+// create color scale
+var color = d3.scale.ordinal()
+	.range(['red', 'blue', 'orange', 'green'])
+
+// append canvas
 var canvas = d3.select('#target').append('svg')
-	.attr('width', 500)
-	.attr('height', 500);
+	.attr('width', 620)
+	.attr('height', 620);
 
-// create group..
 var group = canvas.append('g')
-	.attr('transform', 'translate(200, 200)');
+	.attr('transform', 'translate(310, 310)');
 
-var radius = 100;
-var perimeter = Math.PI * 2;	// full circle is pi*2 radians
-
+// arc path generator
 var arc = d3.svg.arc()
-	.innerRadius(radius - 20)
-	.outerRadius(radius)
-	.startAngle(0)
-	.endAngle(perimeter - 1);	// one radian short of a full circle
+	.innerRadius(40)
+	.outerRadius(radius);
 
-// add path to svg
-group.append('path')
-	.attr('d', arc);
+// pie selection (returns array of objects)
+var pie = d3.layout.pie()
+	.value(function(d){
+		return d;
+	});
+
+var arcs = group.selectAll('.arc')
+	.data(pie(data))
+	.enter()
+	.append('g')
+	.attr('class', 'arc');
+
+// append path to each returned object
+arcs.append('path')
+	.attr('d', arc)
+	.attr('fill', function(d){
+		// d is whole object
+		return color(d.data)
+	})
+
+// add text labels
+arcs.append('text')
+	.attr('transform', function(d){
+		return 'translate(' + arc.centroid(d) + ')';
+	})
+	.text('text-anchor', 'middle')
+	.attr('font-size', '2em')
+	.text(function(d){
+		return d.data;
+	})

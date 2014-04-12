@@ -80,3 +80,10 @@ d3.shuffle(dataArray)		// randomize array
 d3.sum(dataArray)
 d3.mean(dataArray)
 d3.median(dataArray)
+
+// Groups
+// The SVG Transform Attribute applies a list of transformations to an element and it's children.
+// <svg width="200" height="200">
+// 	<g transform="translate(...) scale(...) rotate(...) translate(...) rotate(...)">
+// 	</g>
+// </svg>
