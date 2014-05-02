@@ -1,47 +1,48 @@
 // d3 video lesson 13
 // ==================
-var data = [10, 27, 40, 23];
-var radius = 300;
+var data = {
+	apples: [5, 100, 40, 23],
+	oranges: [20, 4, 15, 30]
+};
+var width = 620;
+var height = 620;
+var radius = Math.min(width, height) / 2;
 
-// create color scale
-var color = d3.scale.ordinal()
-	.range(['red', 'blue', 'orange', 'green'])
-
-// append canvas
-var canvas = d3.select('#target').append('svg')
-	.attr('width', 620)
-	.attr('height', 620);
-
-var group = canvas.append('g')
-	.attr('transform', 'translate(310, 310)');
-
-// arc path generator
-var arc = d3.svg.arc()
-	.innerRadius(40)
-	.outerRadius(radius);
+// construct new ordinal scale with a 10 color range
+var color = d3.scale.category20();
 
 // pie selection (returns array of objects)
 var pie = d3.layout.pie()
-	.value(function(d){
-		return d;
-	});
+	.value(function(d){ return d; });
 
-var arcs = group.selectAll('.arc')
-	.data(pie(data))
-	.enter()
+// path for an arc
+var arc = d3.svg.arc()
+	.innerRadius(radius - 150)
+	.outerRadius(radius - 20);
+
+// append svg
+var svg = d3.select('#target').append('svg')
+	.attr('width', width)
+	.attr('height', height)
+	// creates group
 	.append('g')
-	.attr('class', 'arc');
+		.attr('transform', 'translate(' + width/2 + ',' + height/2 + ')');
 
-// append path to each returned object
-arcs.append('path')
-	.attr('d', arc)
-	.attr('fill', function(d){
-		// d is whole object
-		return color(d.data)
-	})
+// draw path
+var arcs = svg.selectAll('path')
+	.data(pie(data['apples']))
+	.enter()
+		.append('path')		// append a path
+		.attr('fill', function(d, i){
+			return color(i);	// color based on index
+		})
+		.attr('d', arc);
 
 // add text labels
-arcs.append('text')
+var text = svg.selectAll('text')
+	.data(pie(data['apples']))
+	.enter()
+	.append('text')
 	.attr('transform', function(d){
 		return 'translate(' + arc.centroid(d) + ')';
 	})
@@ -50,3 +51,22 @@ arcs.append('text')
 	.text(function(d){
 		return d.data;
 	})
+
+// listen for changes
+d3.selectAll('input').on('change', change);
+
+function change(){
+	var value = this.value;	// this is selected <input> tag
+
+	arcs = arcs.data(pie(data[value]));	// supply new data
+	arcs.attr('d', arc);	// redraw arcs
+
+	// redraw labels
+	text.data(pie(data[value]))
+		.attr('transform', function(d){
+			return 'translate(' + arc.centroid(d) + ')';
+		})
+		.text(function(d){
+			return d.data;
+		})
+}
