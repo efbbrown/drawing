@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type='text/css'>
+		body {
+			text-align: center;
+		}
+		donut-chart {
+			width: 450px;
+			height: 450px;
+			display: inline-block;
+			cursor: pointer;
+		}
+	</style>
+	<script type='text/javascript' src='./angular-1.2.6.js'></script>
+	<script type="text/javascript" src='./d3.js'></script>
+	<script type='text/javascript' src='./donutChart.js'></script>
+</head>
+<body ng-app="donutApp">
+	<div ng-controller="MainCtrl">
+		<donut-chart data='shared.data' on-click="chartClicked()"></donut-chart>
+	</div>
+</body>
+</html>
+
