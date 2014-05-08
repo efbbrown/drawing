@@ -2,7 +2,7 @@
 var mainData = [];
 
 for(var y=0; y<10; y++) {
-    mainData[y] = [ [y], [y], [y], [y], [y], [y], [y], [y], [y], [y] ];
+    mainData[y] = [ [], [], [], [], [], [], [], [], [], [] ];
 }
 
 var id = '#grid',
@@ -15,14 +15,15 @@ var grid = d3.select(id).append("svg")
 
 var rectWidth = width/mainData.length;		// 50
 var rectHeight = height/mainData.length;	// 50
-var newY;
+var newY, rowId;
 
 // draw grid
 for (var i = 0; i < mainData.length; i++){
-
+	rowId = i;
+	// draw row of rectangles inside a group element
 	var rectGroup = grid.append('g');
-	var rectangles = rectGroup.selectAll('rect')
-		.data(mainData[i])		// draw row
+	var row = rectGroup.selectAll('rect')
+		.data(mainData[i])
 		.enter().append("rect")
 			.attr("width", rectWidth)
 			.attr("height", rectHeight)
@@ -33,5 +34,8 @@ for (var i = 0; i < mainData.length; i++){
 				return i * rectHeight;
 			})
 			.style("fill", '#FFF')
-	        .style("stroke", '#555');
+	        .style("stroke", '#555')
+	        .on('click', function() {
+	        	d3.select(this).style('fill', '#FF0000')
+	        });
 }
