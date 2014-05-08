@@ -11,34 +11,20 @@
 </head>
 <body>
 	<ul class='nav nav-tabs'>
-		<li class='active'><a href='./index.html'>Home</a></li>
+		<li><a href='./index.html'>Home</a></li>
 		<li><a href='./circles.html'>Circles</a></li>
 		<li><a href='./barchart.html'>Barchart</a></li>
 		<li><a href='./donut.html'>Donut</a></li>
-		<li><a href='./grid.html'>Grid</a></li>
+		<li class='active'><a href='./grid.html'>Grid</a></li>
 	</ul>
 
-	<!-- basic shapes -->
-	<div class='row'>
-		<div class='col-md-6'>
-			<h2>Basic shapes</h2>
-			<div class='bgcolor' id='target'></div>
-		</div>
-		<div class='col-md-5' id='right-contain'>
-			<h2>Basic bar chart</h2>
-		</div>
-	</div>
-
-	<div class='row'>
-		<div class='col-md-7 text-center' id='people'>
-			<h2>People data</h2>
-		</div>
+	<div class='row text-center'>
+		<div id='grid'></div>
 	</div>
 
 	<script src='js/jquery-1.10.2.js'></script>
 	<script src="js/d3.js"></script>
 
-	<script src='js/shapes.js'></script>
-	<script src='js/displayPeople.js'></script>
+	<script src='js/grid.js'></script>
 </body>
 </html>
